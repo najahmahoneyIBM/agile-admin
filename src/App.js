@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { View } from './components/View';
 
+
 // getting the values of local storage
 const getDatafromLS=()=>{
   const data = localStorage.getItem('books');
@@ -18,7 +19,7 @@ export const App = () => {
   const [books, setbooks]=useState(getDatafromLS());
 
   // input field states
-  const [title, setTitle]=useState('');
+  const [name, setname]=useState('');
   const [author, setAuthor]=useState('');
   const [isbn, setIsbn]=useState('');
 
@@ -27,12 +28,12 @@ export const App = () => {
     e.preventDefault();
     // creating an object
     let book={
-      title,
+      name,
       author,
       isbn
     }
     setbooks([...books,book]);
-    setTitle('');
+    setname('');
     setAuthor('');
     setIsbn('');
   }
@@ -52,20 +53,23 @@ export const App = () => {
 
   return (
     <div className='wrapper'>
-      <h1>BookList App</h1>
-      <p>Add and view your books using local storage</p>
+      <h1>Virtu App</h1>
       <div className='main'>
 
         <div className='form-container'>
           <form autoComplete="off" className='form-group'
           onSubmit={handleAddBookSubmit}>
-            <label>Title</label>
+            <label>Name</label>
             <input type="text" className='form-control' required
-            onChange={(e)=>setTitle(e.target.value)} value={title}></input>
+            onChange={(e)=>setname(e.target.value)} value={name}></input>
             <br></br>
             <label>Author</label>
             <input type="text" className='form-control' required
             onChange={(e)=>setAuthor(e.target.value)} value={author}></input>
+            <br></br>
+            <label>ISBN#</label>
+            <input type="text" className='form-control' required
+            onChange={(e)=>setIsbn(e.target.value)} value={isbn}></input>
             <br></br>
             <label>ISBN#</label>
             <input type="text" className='form-control' required
@@ -84,7 +88,7 @@ export const App = () => {
                 <thead>
                   <tr>
                     <th>ISBN#</th>
-                    <th>Title</th>
+                    <th>name</th>
                     <th>Author</th>
                     <th>Delete</th>
                   </tr>
