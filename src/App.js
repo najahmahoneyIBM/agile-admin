@@ -53,7 +53,7 @@ export const App = () => {
 
   return (
     <div className='wrapper'>
-      <h1>Virtu App</h1>
+      <h1>Cloud Virtu App</h1>
       <div className='main'>
 
         <div className='form-container'>
